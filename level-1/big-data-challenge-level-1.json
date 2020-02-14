@@ -1,0 +1,711 @@
+{
+  "paragraphs": [
+    {
+      "title": "Read in CSV from AWS",
+      "text": "%pyspark%pyspark\nfrom pyspark import SparkFiles\nurl \u003d \"https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Toys_v1_00.tsv.gz\"\nspark.sparkContext.addFile(url)\nToys_df \u003d spark.read.csv(SparkFiles.get(\"amazon_reviews_us_Toys_v1_00.tsv.gz\"), sep\u003d\"\\t\", header\u003dTrue)\nToys_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 02:58:21.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "editorLanguage": "text",
+          "name": "unknown"
+        },
+        "colWidth": 12.0,
+        "editorHide": false,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\n|marketplace|customer_id|     review_id|product_id|product_parent|       product_title|product_category|star_rating|helpful_votes|total_votes|vine|verified_purchase|     review_headline|         review_body|review_date|\n+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\n|         US|   18778586| RDIJS7QYB6XNR|B00EDBY7X8|     122952789|Monopoly Junior B...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|        Excellent!!!| 2015-08-31|\n|         US|   24769659|R36ED1U38IELG8|B00D7JFOPC|     952062646|56 Pieces of Wood...|            Toys|          5|            0|          0|   N|                Y|Good quality trac...|Great quality woo...| 2015-08-31|\n|         US|   44331596| R1UE3RPRGCOLD|B002LHA74O|     818126353|Super Jumbo Playi...|            Toys|          2|            1|          1|   N|                Y|           Two Stars|Cards are not as ...| 2015-08-31|\n|         US|   23310293|R298788GS6I901|B00ARPLCGY|     261944918|Barbie Doll and F...|            Toys|          5|            0|          0|   N|                Y|my daughter loved...|my daughter loved...| 2015-08-31|\n|         US|   38745832|  RNX4EXOBBPN5|B00UZOPOFW|     717410439|Emazing Lights eL...|            Toys|          1|            1|          1|   N|                Y|     DONT BUY THESE!|Do not buy these!...| 2015-08-31|\n|         US|   13394189|R3BPETL222LMIM|B009B7F6CA|     873028700|Melissa \u0026 Doug Wa...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|Great item. Pictu...| 2015-08-31|\n|         US|    2749569|R3SORMPJZO3F2J|B0101EHRSM|     723424342|Big Bang Cosmic P...|            Toys|          3|            2|          2|   N|                Y|         Three Stars|To keep together,...| 2015-08-31|\n|         US|   41137196|R2RDOJQ0WBZCF6|B00407S11Y|     383363775|Fun Express Insec...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|I was pleased wit...| 2015-08-31|\n|         US|     433677|R2B8VBEPB4YEZ7|B00FGPU7U2|     780517568|Fisher-Price Octo...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|    Children like it| 2015-08-31|\n|         US|    1297934|R1CB783I7B0U52|B0013OY0S0|     269360126|Claw Climber Goli...|            Toys|          1|            0|          1|   N|                Y|Shame on the sell...|Showed up not how...| 2015-08-31|\n|         US|   52006292| R2D90RQQ3V8LH|B00519PJTW|     493486387|100 Foot Multicol...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|Really liked thes...| 2015-08-31|\n|         US|   32071052|R1Y4ZOUGFMJ327|B001TCY2DO|     459122467|Pig Jumbo Foil Ba...|            Toys|          5|            0|          0|   N|                Y|   Nice huge balloon|Nice huge balloon...| 2015-08-31|\n|         US|    7360347|R2BUV9QJI2A00X|B00DOQCWF8|     226984155|Minecraft Animal ...|            Toys|          5|            0|          1|   N|                Y|          Five Stars|          Great deal| 2015-08-31|\n|         US|   11613707| RSUHRJFJIRB3Z|B004C04I4I|     375659886|Disney Baby: Eeyo...|            Toys|          4|            0|          0|   N|                Y|          Four Stars|       As Advertised| 2015-08-31|\n|         US|   13545982|R1T96CG98BBA15|B00NWGEKBY|     933734136|Team Losi 8IGHT-E...|            Toys|          3|            2|          4|   N|                Y|... servo so expe...|Comes w a 15$ ser...| 2015-08-31|\n|         US|   43880421| R2ATXF4QQ30YW|B00000JS5S|     341842639|Hot Wheels 48- Ca...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|   awesome ! Thanks!| 2015-08-31|\n|         US|    1662075|R1YS3DS218NNMD|B00XPWXYDK|     210135375|ZuZo 2.4GHz 4 CH ...|            Toys|          5|            4|          4|   N|                N|The closest relev...|I got this item f...| 2015-08-31|\n|         US|   18461411|R2SDXLTLF92O0H|B00VPXX92W|     705054378|Teenage Mutant Ni...|            Toys|          5|            0|          0|   N|                Y|          Five Stars|It was a birthday...| 2015-08-31|\n|         US|   27225859| R4R337CCDWLNG|B00YRA3H4U|     223420727|Franklin Sports M...|            Toys|          3|            0|          1|   Y|                N|Got wrong product...|Got a wrong produ...| 2015-08-31|\n|         US|   20494593|R32Z6UA4S5Q630|B009T8BSQY|     787701676|Alien Frontiers: ...|            Toys|          1|            0|          0|   N|                Y|         Overpriced.|You need expansio...| 2015-08-31|\n+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1928879908",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 02:52:14.582",
+      "dateFinished": "2020-02-14 02:52:14.845",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nurl \u003d \"https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Video_Games_v1_00.tsv.gz\"\nspark.sparkContext.addFile(url)\nvideo_games_df \u003d spark.read.csv(SparkFiles.get(\"amazon_reviews_us_Video_Games_v1_00.tsv.gz\"), sep\u003d\"\\t\", header\u003dTrue)\nvideo_games_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 02:59:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\n|marketplace|customer_id|     review_id|product_id|product_parent|       product_title|product_category|star_rating|helpful_votes|total_votes|vine|verified_purchase|     review_headline|         review_body|review_date|\n+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\n|         US|   12039526| RTIS3L2M1F5SM|B001CXYMFS|     737716809|Thrustmaster T-Fl...|     Video Games|          5|            0|          0|   N|                Y|an amazing joysti...|Used this for Eli...| 2015-08-31|\n|         US|    9636577| R1ZV7R40OLHKD|B00M920ND6|     569686175|Tonsee 6 buttons ...|     Video Games|          5|            0|          0|   N|                Y|Definitely a sile...|Loved it,  I didn...| 2015-08-31|\n|         US|    2331478|R3BH071QLH8QMC|B0029CSOD2|      98937668|Hidden Mysteries:...|     Video Games|          1|            0|          1|   N|                Y|            One Star|poor quality work...| 2015-08-31|\n|         US|   52495923|R127K9NTSXA2YH|B00GOOSV98|      23143350|GelTabz Performan...|     Video Games|          3|            0|          0|   N|                Y|good, but could b...|nice, but tend to...| 2015-08-31|\n|         US|   14533949|R32ZWUXDJPW27Q|B00Y074JOM|     821342511|Zero Suit Samus a...|     Video Games|          4|            0|          0|   N|                Y|   Great but flawed.|Great amiibo, gre...| 2015-08-31|\n|         US|    2377552|R3AQQ4YUKJWBA6|B002UBI6W6|     328764615|Psyclone Recharge...|     Video Games|          1|            0|          0|   N|                Y|            One Star|The remote consta...| 2015-08-31|\n|         US|   17521011|R2F0POU5K6F73F|B008XHCLFO|      24234603|Protection for yo...|     Video Games|          5|            0|          0|   N|                Y|              A Must|I have a 2012-201...| 2015-08-31|\n|         US|   19676307|R3VNR804HYSMR6|B00BRA9R6A|     682267517|   Nerf 3DS XL Armor|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|Perfect, kids lov...| 2015-08-31|\n|         US|     224068| R3GZTM72WA2QH|B009EPWJLA|     435241890|One Piece: Pirate...|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|            Excelent| 2015-08-31|\n|         US|   48467989| RNQOY62705W1K|B0000AV7GB|     256572651|Playstation 2 Dan...|     Video Games|          4|            0|          0|   N|                Y|          Four Stars|Slippery but expe...| 2015-08-31|\n|         US|     106569|R1VTIA3JTYBY02|B00008KTNN|     384411423|Metal Arms: Glitc...|     Video Games|          5|            0|          0|   N|                N|          Five Stars|Love the game. Se...| 2015-08-31|\n|         US|   48269642|R29DOU8791QZL8|B000A3IA0Y|     472622859|72 Pin Connector ...|     Video Games|          1|            0|          0|   N|                Y| Game will get stuck|Does not fit prop...| 2015-08-31|\n|         US|   52738710|R15DUT1VIJ9RJZ|B0053BQN34|     577628462|uDraw Gametablet ...|     Video Games|          2|            0|          0|   N|                Y|We have tried it ...|This was way too ...| 2015-08-31|\n|         US|   10556786|R3IMF2MQ3OU9ZM|B002I0HIMI|     988218515|NBA 2K12(Covers M...|     Video Games|          4|            0|          0|   N|                Y|          Four Stars|Works great good ...| 2015-08-31|\n|         US|    2963837|R23H79DHOZTYAU|B0081EH12M|     770100932|New Trigger Grips...|     Video Games|          1|            1|          1|   N|                Y|Now i have to buy...|It did not fit th...| 2015-08-31|\n|         US|   23092109| RIV24EQAIXA4O|B005FMLZQQ|      24647669|Xbox 360 Media Re...|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|perfect lightweig...| 2015-08-31|\n|         US|   23091728|R3UCNGYDVN24YB|B002BSA388|      33706205|Super Mario Galaxy 2|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|               great| 2015-08-31|\n|         US|   10712640| RUL4H4XTTN2DY|B00BUSLSAC|     829667834|Nintendo 3DS XL -...|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|Works beautifully...| 2015-08-31|\n|         US|   17455376|R20JF7Z4DHTNX5|B00KWF38AW|     110680188|Captain Toad:  Tr...|     Video Games|          5|            0|          0|   N|                Y|          Five Stars|Kids loved the ga...| 2015-08-31|\n|         US|   14754850|R2T1AJ5MFI2260|B00BRQJYA8|     616463426|Lego Batman 2: DC...|     Video Games|          4|            0|          0|   N|                Y|          Four Stars|           Goodngame| 2015-08-31|\n+-----------+-----------+--------------+----------+--------------+--------------------+----------------+-----------+-------------+-----------+----+-----------------+--------------------+--------------------+-----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200214-025739_1979895896",
+      "dateCreated": "2020-02-14 02:57:39.000",
+      "dateStarted": "2020-02-14 02:58:25.836",
+      "dateFinished": "2020-02-14 02:59:17.522",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "Count rows",
+      "text": "%pyspark\n\nToys_df.count()",
+      "user": "",
+      "dateUpdated": "2020-02-14 02:57:00.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "4864249",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1041759002",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 02:52:14.873",
+      "dateFinished": "2020-02-14 02:52:41.070",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n\nvideo_games_df.count()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:07:49.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "1785997",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200214-025937_653020171",
+      "dateCreated": "2020-02-14 02:59:37.000",
+      "dateStarted": "2020-02-14 02:59:59.481",
+      "dateFinished": "2020-02-14 03:00:13.962",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "Merge DataFrames",
+      "text": "%pyspark\ndf_concat \u003d video_games_df.union(Toys_df)\ndf_concat.count()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:23:36.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "6650246",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200214-030201_1248527704",
+      "dateCreated": "2020-02-14 03:02:01.000",
+      "dateStarted": "2020-02-14 03:22:27.012",
+      "dateFinished": "2020-02-14 03:22:53.009",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Clean up DataFrames to match tables",
+      "text": "%pyspark\nfrom pyspark.sql.functions import to_date\n# Review DataFrame\nreview_id_df \u003d df_concat.select([\"review_id\", \"customer_id\", \"product_id\", \"product_parent\", to_date(\"review_date\", \u0027yyyy-MM-dd\u0027).alias(\"review_date\")]).drop_duplicates()\nreview_id_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:25:46.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------+-----------+----------+--------------+-----------+\n|     review_id|customer_id|product_id|product_parent|review_date|\n+--------------+-----------+----------+--------------+-----------+\n|R127K9NTSXA2YH|   52495923|B00GOOSV98|      23143350| 2015-08-31|\n| R2RRF71MHXZLN|   38962183|B0050SX9I2|     552446825| 2015-08-31|\n|R23RY5CSJBC4A0|   21101130|B00M4PSVGY|     516963457| 2015-08-31|\n|R11ISKTW3NA7P0|   52766045|B000OFSBL6|     131536408| 2015-08-31|\n|R1HZ8L3THREUIE|   15123150|B00MV7KVP4|      92208606| 2015-08-31|\n|R3Q1XSZ9WGA5W3|   43041569|B00N1YZ4B2|     190364381| 2015-08-31|\n|R39029SL4HEL3K|   23547813|B00HLT0YT0|     486771765| 2015-08-30|\n|R22WKC43S367M1|   45855343|B00KJ8UPC6|     119901605| 2015-08-30|\n|R1RKVWJAMZW4L0|   46220808|B00BIHODK2|      46559004| 2015-08-30|\n|R1XEYG46QWS8RI|    1643504|B00L59D9HG|     529023817| 2015-08-29|\n| RLVWEG0793M18|   36982367|B00LUF3DOY|     218908462| 2015-08-29|\n|R2M6YQRHBCK5NW|   24622982|B00RZKX2EY|     359784846| 2015-08-29|\n| R1KXEP1JW3BKV|   37097263|B002ST7AEU|     994741115| 2015-08-29|\n| RSB3D8V8FE0Q7|   22115464|B00002STXQ|     735579313| 2015-08-29|\n|R2ITCZAX3KTE42|    3165932|B00V84Q1QE|      31845845| 2015-08-29|\n|R38K91GICK2VR1|   27925539|B00A0SO0KS|     902853249| 2015-08-29|\n|R1AJ48DO1PNLO4|   12224003|B00KVP78FE|     177244653| 2015-08-28|\n|R1W0U3LK6BGVD3|   11960468|B0038MUCWS|     860738324| 2015-08-28|\n|R2M0ZVXZD09M97|     133276|B000AAL4HI|        315971| 2015-08-28|\n|R3Q6L4AX72AJYI|   15417201|B00W435BL4|     281495895| 2015-08-28|\n+--------------+-----------+----------+--------------+-----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1775932468",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:25:06.878",
+      "dateFinished": "2020-02-14 03:25:45.998",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Products DataFrame",
+      "text": "%pyspark\n\nproducts_df \u003d df_concat.select([\"product_id\", \"product_title\", \"product_category\"]).drop_duplicates()\nproducts_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:27:36.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+--------------------+----------------+\n|product_id|       product_title|product_category|\n+----------+--------------------+----------------+\n|B001SQ8HTQ|Nyko Wand Core Pa...|     Video Games|\n|B001R3UX3S|Tiger Woods PGA T...|     Video Games|\n|B00302YR6I|DreamGEAR Nintend...|     Video Games|\n|B00FRESY4I|The Amazing Spide...|     Video Games|\n|B004J6I0YO|Prince of Persia ...|     Video Games|\n|B002L94TLY|Two GameCube / Wi...|     Video Games|\n|B00IZAF9GM|    IA/VT -COLORFUL-|     Video Games|\n|B000WMEEB2|         Borderlands|     Video Games|\n|B00VFT4TYS|Inkling Boy amiib...|     Video Games|\n|B011I4AQWI|Dr. Mario amiibo ...|     Video Games|\n|B00UCIPUMI|Xbox 360 Headset ...|     Video Games|\n|B00F2VK0PM|Skylanders SWAP F...|     Video Games|\n|B00EDHEW32|Sades PC Wired 3....|     Video Games|\n|B000XJNTNS|Mario Kart Wii wi...|     Video Games|\n|B001CBLNL6|Boogie Superstar ...|     Video Games|\n|B003OPX802|       Zumba Fitness|     Video Games|\n|B00OOFZLOC|3CLeader® Control...|     Video Games|\n|B00CJ7IUIQ|The Elder Scrolls...|     Video Games|\n|B0031QFJVU|Wii Grand Slam Sp...|     Video Games|\n|B002OL1KEI|LXL? Wii Motion P...|     Video Games|\n+----------+--------------------+----------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_2119422928",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:25:59.265",
+      "dateFinished": "2020-02-14 03:26:30.269",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Customers DataFrame",
+      "text": "%pyspark\n\ncustomers_df \u003d df_concat.groupby(\"customer_id\").agg({\"customer_id\": \"count\"}).withColumnRenamed(\"count(customer_id)\", \"customer_count\")\ncustomers_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:27:40.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+--------------+\n|customer_id|customer_count|\n+-----------+--------------+\n|     690560|             2|\n|   45046643|             8|\n|   47822294|             1|\n|     740955|             1|\n|   12536186|             1|\n|    3700565|             1|\n|    2663941|             2|\n|   49352379|             1|\n|    7770381|             3|\n|     711009|             1|\n|     588545|             1|\n|    7377220|             4|\n|   24168883|             2|\n|   35129371|             8|\n|   16674821|             1|\n|    8379448|             2|\n|    1815445|             1|\n|   24540860|             2|\n|   26791558|            16|\n|   36407303|             1|\n+-----------+--------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_421251012",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:26:30.277",
+      "dateFinished": "2020-02-14 03:27:00.485",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Reviews DataFrame",
+      "text": "%pyspark\n\nreviews_df \u003d df_concat.select([\"review_id\", \"customer_id\", \"product_id\", \"product_parent\", \"review_date\"])\nreviews_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:27:45.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------+-----------+----------+--------------+-----------+\n|     review_id|customer_id|product_id|product_parent|review_date|\n+--------------+-----------+----------+--------------+-----------+\n| RTIS3L2M1F5SM|   12039526|B001CXYMFS|     737716809| 2015-08-31|\n| R1ZV7R40OLHKD|    9636577|B00M920ND6|     569686175| 2015-08-31|\n|R3BH071QLH8QMC|    2331478|B0029CSOD2|      98937668| 2015-08-31|\n|R127K9NTSXA2YH|   52495923|B00GOOSV98|      23143350| 2015-08-31|\n|R32ZWUXDJPW27Q|   14533949|B00Y074JOM|     821342511| 2015-08-31|\n|R3AQQ4YUKJWBA6|    2377552|B002UBI6W6|     328764615| 2015-08-31|\n|R2F0POU5K6F73F|   17521011|B008XHCLFO|      24234603| 2015-08-31|\n|R3VNR804HYSMR6|   19676307|B00BRA9R6A|     682267517| 2015-08-31|\n| R3GZTM72WA2QH|     224068|B009EPWJLA|     435241890| 2015-08-31|\n| RNQOY62705W1K|   48467989|B0000AV7GB|     256572651| 2015-08-31|\n|R1VTIA3JTYBY02|     106569|B00008KTNN|     384411423| 2015-08-31|\n|R29DOU8791QZL8|   48269642|B000A3IA0Y|     472622859| 2015-08-31|\n|R15DUT1VIJ9RJZ|   52738710|B0053BQN34|     577628462| 2015-08-31|\n|R3IMF2MQ3OU9ZM|   10556786|B002I0HIMI|     988218515| 2015-08-31|\n|R23H79DHOZTYAU|    2963837|B0081EH12M|     770100932| 2015-08-31|\n| RIV24EQAIXA4O|   23092109|B005FMLZQQ|      24647669| 2015-08-31|\n|R3UCNGYDVN24YB|   23091728|B002BSA388|      33706205| 2015-08-31|\n| RUL4H4XTTN2DY|   10712640|B00BUSLSAC|     829667834| 2015-08-31|\n|R20JF7Z4DHTNX5|   17455376|B00KWF38AW|     110680188| 2015-08-31|\n|R2T1AJ5MFI2260|   14754850|B00BRQJYA8|     616463426| 2015-08-31|\n+--------------+-----------+----------+--------------+-----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_990151108",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:27:02.359",
+      "dateFinished": "2020-02-14 03:27:17.943",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Vine DataFrame",
+      "text": "%pyspark\n\nvine_df \u003d df_concat.select([\"review_id\", \"star_rating\", \"helpful_votes\", \"total_votes\", \"vine\"])\nvine_df.show()",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:29:09.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------+-----------+-------------+-----------+----+\n|     review_id|star_rating|helpful_votes|total_votes|vine|\n+--------------+-----------+-------------+-----------+----+\n| RTIS3L2M1F5SM|          5|            0|          0|   N|\n| R1ZV7R40OLHKD|          5|            0|          0|   N|\n|R3BH071QLH8QMC|          1|            0|          1|   N|\n|R127K9NTSXA2YH|          3|            0|          0|   N|\n|R32ZWUXDJPW27Q|          4|            0|          0|   N|\n|R3AQQ4YUKJWBA6|          1|            0|          0|   N|\n|R2F0POU5K6F73F|          5|            0|          0|   N|\n|R3VNR804HYSMR6|          5|            0|          0|   N|\n| R3GZTM72WA2QH|          5|            0|          0|   N|\n| RNQOY62705W1K|          4|            0|          0|   N|\n|R1VTIA3JTYBY02|          5|            0|          0|   N|\n|R29DOU8791QZL8|          1|            0|          0|   N|\n|R15DUT1VIJ9RJZ|          2|            0|          0|   N|\n|R3IMF2MQ3OU9ZM|          4|            0|          0|   N|\n|R23H79DHOZTYAU|          1|            1|          1|   N|\n| RIV24EQAIXA4O|          5|            0|          0|   N|\n|R3UCNGYDVN24YB|          5|            0|          0|   N|\n| RUL4H4XTTN2DY|          5|            0|          0|   N|\n|R20JF7Z4DHTNX5|          5|            0|          0|   N|\n|R2T1AJ5MFI2260|          4|            0|          0|   N|\n+--------------+-----------+-------------+-----------+----+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1637380297",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:28:48.633",
+      "dateFinished": "2020-02-14 03:29:04.213",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Push to AWS RDS instance.",
+      "text": "%pyspark\n# Configuration for RDS instance\nmode\u003d\"append\"\njdbc_url\u003d\"jdbc:postgresql://mypostgresdb.cr2hoksxzp5a.us-east-2.rds.amazonaws.com:5432/big_data_db\"\nconfig \u003d {\"user\":\"root\", \n          \"password\": \"Jebn05041992\", \n          \"driver\":\"org.postgresql.Driver\"}",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:29:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1377893880",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:29:17.701",
+      "dateFinished": "2020-02-14 03:29:17.808",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Write products_df to table in RDS",
+      "text": "%pyspark\n\nproducts_df.write.jdbc(url\u003djdbc_url, table\u003d\u0027products\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:31:33.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_869782713",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:29:19.380",
+      "dateFinished": "2020-02-14 03:31:33.234",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Write customers_df to table in RDS",
+      "text": "%pyspark\n\ncustomers_df.write.jdbc(url\u003djdbc_url, table\u003d\u0027customers\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:37:05.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1144564067",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:31:33.237",
+      "dateFinished": "2020-02-14 03:37:05.234",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Write review_id_df to table in RDS",
+      "text": "%pyspark\n\nreviews_df.write.jdbc(url\u003djdbc_url, table\u003d\u0027review_id_table\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:37:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1358870190",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:45:05.000",
+      "dateFinished": "2020-02-14 02:57:54.661",
+      "status": "ABORT",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "# Write vine_df to table in RDS",
+      "text": "%pyspark\n\nvine_df.write.jdbc(url\u003djdbc_url, table\u003d\u0027vines\u0027, mode\u003dmode, properties\u003dconfig)",
+      "user": "",
+      "dateUpdated": "2020-02-14 03:29:25.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "title": true,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200208-163526_1936205109",
+      "dateCreated": "2020-02-08 16:35:26.000",
+      "dateStarted": "2020-02-14 03:45:05.000",
+      "dateFinished": "2020-02-14 02:28:01.353",
+      "status": "ABORT",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2020-02-13 23:52:42.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20200213-230103_404187764",
+      "dateCreated": "2020-02-13 23:01:03.000",
+      "dateStarted": "2020-02-14 03:45:05.000",
+      "dateFinished": "2020-02-14 03:45:05.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "big-data-challenge-level-1-1",
+  "id": "f5c9829df8d24403b2da778277b16198",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}
